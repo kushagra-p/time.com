@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(app) {
+module.exports = function (app) {
   var todoList = require('../service/latest-service');
 
   // latest-stories Routes

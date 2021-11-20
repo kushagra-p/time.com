@@ -1,32 +1,31 @@
 <html>
+
 <head>
   <title>TIME.COM</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-  <script type='text/javascript' src='/getLatestStories'></script>
+  <script id="getStory" type='text/javascript' src='/getLatestStories'></script>
   <script type='text/javascript'>
-    window.onload = function(){
-        var name = prompt("What's your name?");
-        let xhr = new XMLHttpRequest();
-xhr.open('get', 'https://time-latest.herokuapp.com/getLatestStories');
-xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-xhr.send(null);
-xhr.onloadend= function() {
-    console.log(JSON.parse(jsonObj));
-    let data=JSON.parse(jsonObj)
-  for(let i in data){
-    console.log((Number(i)+1).toString())
-    let str="<a href='"+data[i]['link']+"'>"+data[i]['title']+"</a>";
-    console.log(str)
-    document.getElementById((Number(i)+1).toString()).innerHTML = str;
-  }
-};
+    window.onload = function () {
+      var jsonObj = document.getElementById("getStory").src;
+      let xhr = new XMLHttpRequest();
+      xhr.open('get', jsonObj);
+      xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+      xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      xhr.send(null);
+      xhr.onloadend = function () {
+        let data = JSON.parse(xhr.response)
+        for (let i in data) {
+          let str = "<a href='" + data[i]['link'] + "'>" + data[i]['title'] + "</a>";
+          document.getElementById((Number(i) + 1).toString()).innerHTML = str;
+        }
+      };
     };
-    </script>
+  </script>
 </head>
+
 <body>
   <div>
     <nav class="navbar  navbar-static-top" style="background-color: white;border: 1px;">
@@ -35,19 +34,19 @@ xhr.onloadend= function() {
         <ul class="nav navbar-nav" style="font-size: 20px;">
           <li>
             <div style="padding-right: 10px;padding-top: 7px;">
-            <div style="width: 35px;
+              <div style="width: 35px;
             height: 5px;
             background-color: black;
             margin: 6px 0;"></div>
-            <div style="width: 35px;
+              <div style="width: 35px;
                         height: 5px;
                         background-color: black;
                         margin: 6px 0;"></div>
-            <div style="width: 35px;
+              <div style="width: 35px;
                         height: 5px;
                         background-color: black;
                         margin: 6px 0;"></div>
-                        </div>
+            </div>
           </li>
           <li>
             <a class="navbar-brand" href="/"
@@ -103,4 +102,5 @@ xhr.onloadend= function() {
     </div>
   </div>
 </body>
+
 </html>
