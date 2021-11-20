@@ -1,0 +1,106 @@
+<html>
+<head>
+  <title>TIME.COM</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script type='text/javascript' src='/getLatestStories'></script>
+  <script type='text/javascript'>
+    window.onload = function(){
+        var name = prompt("What's your name?");
+        let xhr = new XMLHttpRequest();
+xhr.open('get', 'https://time-latest.herokuapp.com/getLatestStories');
+xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+xhr.send(null);
+xhr.onloadend= function() {
+    console.log(JSON.parse(jsonObj));
+    let data=JSON.parse(jsonObj)
+  for(let i in data){
+    console.log((Number(i)+1).toString())
+    let str="<a href='"+data[i]['link']+"'>"+data[i]['title']+"</a>";
+    console.log(str)
+    document.getElementById((Number(i)+1).toString()).innerHTML = str;
+  }
+};
+    };
+    </script>
+</head>
+<body>
+  <div>
+    <nav class="navbar  navbar-static-top" style="background-color: white;border: 1px;">
+      <div class="container" style="width: 100%;padding-top: 10px;">
+
+        <ul class="nav navbar-nav" style="font-size: 20px;">
+          <li>
+            <div style="padding-right: 10px;padding-top: 7px;">
+            <div style="width: 35px;
+            height: 5px;
+            background-color: black;
+            margin: 6px 0;"></div>
+            <div style="width: 35px;
+                        height: 5px;
+                        background-color: black;
+                        margin: 6px 0;"></div>
+            <div style="width: 35px;
+                        height: 5px;
+                        background-color: black;
+                        margin: 6px 0;"></div>
+                        </div>
+          </li>
+          <li>
+            <a class="navbar-brand" href="/"
+              style="color: red; text-align: left;font-weight: bold;font-family: 'Times New Roman', Times, serif; font-size: 40px;">TIME</a>
+          </li>
+          <li class="active">
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="">About</a>
+          </li>
+          <li>
+            <a href="">Contact Us</a>
+          </li>
+        </ul>
+        <div style="text-align: right;">
+          <a class="btn btn-default btn-lg" href="#" role="button">Login</a>
+          <a class="btn btn-default btn-lg" href="#" role="button">Subscribe</a>
+        </div>
+      </div>
+    </nav>
+    <hr>
+    <div class="jumbotron" style="padding:40px;">
+      <div style="width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;">
+        <h2 style="padding-top: 20px;">
+          &#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#60;&#60;</h3>
+          <h1 style="font-weight: bold;color: red;">Latest Stories</h1>
+          <h2 style="padding-top: 20px;">
+            &#62;&#62;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;</h3>
+      </div>
+      <div>
+        <div style="width: 100%;padding-top:50px;
+        display: flex;padding-bottom:50px;
+        flex-direction: row;padding-inline: 10px;
+        justify-content: center;">
+          <div id="1" style=" height: 200px; padding:10px;padding-top: 70px;
+          width: 250px;border: dotted 5px black;"></div>
+          <div id="2" style=" height: 200px; padding:10px;padding-top: 70px;
+          width: 250px;border: dotted 5px black;"></div>
+          <div id="3" style=" height: 200px; padding:10px;padding-top: 70px;
+          width: 250px;border: dotted 5px black;"></div>
+          <div id="4" style=" height: 200px; padding:10px;padding-top: 70px;
+          width: 250px;border: dotted 5px black;"></div>
+          <div id="5" style=" height: 200px; padding:10px;padding-top: 70px;
+          width: 250px;border: dotted 5px black;"></div>
+        </div>
+      </div>
+      <p style="text-align: center;"><a class="btn btn-primary btn-lg" href="https://time.com" role="button">Learn
+          more</a></p>
+    </div>
+  </div>
+</body>
+</html>

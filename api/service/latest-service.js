@@ -3,6 +3,9 @@ var jsonObj
 
 var jsdom = require("jsdom");
 var JSDOM = jsdom.JSDOM;
+exports.list_html = function(req, res) {
+  res.sendFile(__dirname + '/index.html');
+}
 
 exports.get_latest_stories = function(req,res) {
     const https = require('https')

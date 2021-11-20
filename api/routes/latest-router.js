@@ -6,6 +6,8 @@ module.exports = function(app) {
   app.route('/getLatestStories')
     .get(todoList.get_latest_stories);
 
+  app.route('/display')
+    .get(todoList.list_html)
 };
 
 
